@@ -1,0 +1,10 @@
+services:
+  database:
+    image: 'postgres:15-alpine'
+    container_name: 'database'
+    environment:
+      - 'POSTGRES_DB=mydatabase'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=myuser'
+    ports:
+      - '5432'
