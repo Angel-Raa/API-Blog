@@ -26,15 +26,15 @@ public class Post {
     private LocalDateTime updated;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Users.class)
     @JoinColumn(name = "author_id")
-    private Users author;
+    private Users users;
 
-    public Post(Long id, String title, String content, LocalDateTime created, LocalDateTime updated, Users author) {
+    public Post(Long id, String title, String content, LocalDateTime created, LocalDateTime updated, Users users) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.created = created;
         this.updated = updated;
-        this.author = author;
+        this.users = users;
     }
 
     public Post() {
@@ -80,13 +80,11 @@ public class Post {
         this.updated = updated;
     }
 
-    public Users getAuthor() {
-        return author;
+    public Users getUsers() {
+        return users;
     }
 
-    public void setAuthor(Users author) {
-        this.author = author;
+    public void setUsers(Users users) {
+        this.users = users;
     }
-
-    
 }

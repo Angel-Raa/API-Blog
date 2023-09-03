@@ -6,7 +6,7 @@ import org.mapstruct.*;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CommentMapper {
-    @Mapping(target = "id", ignore = true)
+
     Comment toComment(CommentDTO commentDto);
     CommentDTO toCommentDto(Comment comment);
     @Mappings({
@@ -16,7 +16,6 @@ public interface CommentMapper {
     })
     Comment updateCommentFromDto(CommentDTO dto, @MappingTarget Comment comment);
     // Mapeo inverso para evitar duplicar código
-    @InheritInverseConfiguration
-    CommentDTO mapToCommentDto(Comment comment);
+
     
 }
