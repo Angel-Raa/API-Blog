@@ -1,4 +1,6 @@
 package org.caja.idea.entity.dto;
 
-public record CommentDTO(Long id,String body,  Long user_id) {
+import java.time.LocalDateTime;
+
+public record CommentDTO(Long id, String body, LocalDateTime created,  Long user_id) {
 }

@@ -1,4 +1,6 @@
 package org.caja.idea.entity.dto;
 
-public record PostDTO(Long id,String title, String content, Long author_id) {
+import java.time.LocalDateTime;
+
+public record PostDTO(Long id, String title, String content, LocalDateTime created, LocalDateTime updated, Long author_id) {
 }
