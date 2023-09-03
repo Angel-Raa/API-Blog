@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 public class Comment {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
-
     @NotBlank(message = Message.BODY_REQUIRED)
     private String body;
     @Column(name = "created")
