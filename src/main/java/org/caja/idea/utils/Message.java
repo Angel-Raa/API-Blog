@@ -16,5 +16,6 @@ public class Message {
     public static final String INVALID_CREDENTIALS = "Invalid credentials";
     public static final String INVALID_TOKEN = "Invalid token";
     public static final String PASSWORD_MIN_LENGTH = " The password must have at least 8 characters.";
-    
+
+    public static final String USERNAME_NOT_FOUND = "username not found" ;
 }
