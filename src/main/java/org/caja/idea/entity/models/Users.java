@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import org.caja.idea.entity.role.Role;
-import org.caja.idea.utils.Message;
+import org.caja.idea.utils.constants.Message;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;

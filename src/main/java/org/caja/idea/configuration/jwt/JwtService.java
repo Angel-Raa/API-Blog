@@ -21,12 +21,12 @@ public class JwtService {
     @Value("${spring.jwt.expired}")
     private long EXPIRATION_IN_SECONDS_MILLIS;
 
-    public String generateToken(String username, Map<String, Object> claims) {
+    public String generateToken(Users username, Map<String, Object> claims) {
         Date issuedAt = new Date(System.currentTimeMillis());
         Date expiration = new Date(issuedAt.getTime() + EXPIRATION_IN_SECONDS_MILLIS * 60 * 1000);
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(username)
+                .setSubject(username.getUsername())
                 .setIssuedAt(issuedAt)
                 .setExpiration(expiration)
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)

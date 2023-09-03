@@ -1,4 +1,4 @@
-package org.caja.idea.utils;
+package org.caja.idea.utils.constants;
 
 public class Message {
     public static final String TITLE_REQUIRED = "Title is required";

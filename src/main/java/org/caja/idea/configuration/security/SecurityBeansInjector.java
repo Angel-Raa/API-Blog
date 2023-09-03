@@ -1,7 +1,7 @@
 package org.caja.idea.configuration.security;
 
 import org.caja.idea.repository.IUserRepository;
-import org.caja.idea.utils.Message;
+import org.caja.idea.utils.constants.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
