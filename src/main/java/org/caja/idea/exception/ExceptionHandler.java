@@ -22,13 +22,6 @@ public class ExceptionHandler extends RuntimeException {
         this.time = time;
     }
 
-    public ExceptionHandler(String message, int code, HttpStatus http, String description, LocalDateTime time) {
-        this.message = message;
-        this.code = code;
-        this.http = http;
-        this.description = description;
-        this.time = time;
-    }
 
     public ExceptionHandler() {
     }

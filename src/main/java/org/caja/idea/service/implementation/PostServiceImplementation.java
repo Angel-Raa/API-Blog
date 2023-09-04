@@ -85,7 +85,7 @@ public class PostServiceImplementation  implements IPostService {
                 .orElseThrow(() -> new PostNotFoundException(Message.POST_NOT_FOUND, 404, HttpStatus.NOT_FOUND, LocalDateTime.now()));
         // Verificar si el usuario actual coincide con el autor del post
         if(!post.getUsers().getUsername().equals(postDTO.username())){
-            throw  new UnauthorizedException(Message.USER_NOT_AUTHORIZED, 401, HttpStatus.UNAUTHORIZED,  Message.WITHOUT_PERMISSION, LocalDateTime.now());
+            throw  new UnauthorizedException(Message.USER_NOT_AUTHORIZED, 401, HttpStatus.UNAUTHORIZED,  LocalDateTime.now(), Message.WITHOUT_PERMISSION);
         }
         // Actualizar los campos del post con los valores proporcionados en postDTO
         post.setTitle(postDTO.title());
@@ -100,7 +100,7 @@ public class PostServiceImplementation  implements IPostService {
         Post post = repository.findById(postId)
                 .orElseThrow(() -> new PostNotFoundException(Message.POST_NOT_FOUND, 404, HttpStatus.NOT_FOUND, LocalDateTime.now()));
         if(!post.getUsers().getUsername().equals(request.getUsername())){
-            throw new UnauthorizedException(Message.UNAUTHORIZED_DELETE_MESSAGE, 401, HttpStatus.UNAUTHORIZED,  Message.UNAUTHORIZED_PERMISSION_MESSAGE, LocalDateTime.now());
+            throw new UnauthorizedException(Message.UNAUTHORIZED_DELETE_MESSAGE, 401, HttpStatus.UNAUTHORIZED, LocalDateTime.now(), Message.UNAUTHORIZED_PERMISSION_MESSAGE);
         }
         repository.delete(post);
         return new ApiResponse(Message.POST_DELETE_SUCCESSFULLY, 200, HttpStatus.OK, LocalDateTime.now());

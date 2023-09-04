@@ -82,8 +82,8 @@ public class CommentServiceImplementation implements ICommentService {
                         LocalDateTime.now()));
         // Verificar si el usuario tiene permisos para actualizar el comentario
         if (!comment.getUser().getUsername().equals(request.username())) {
-            throw new UnauthorizedException(Message.USER_NOT_AUTHORIZED, 401, HttpStatus.UNAUTHORIZED,
-                    Message.COMMENT_NOT_AUTHORIZED_TO_UPDATE_COMMENT, LocalDateTime.now());
+            throw new UnauthorizedException(Message.USER_NOT_AUTHORIZED, 401, HttpStatus.UNAUTHORIZED
+                    , LocalDateTime.now(), Message.COMMENT_NOT_AUTHORIZED_TO_UPDATE_COMMENT);
         }
         // Actualizar el contenido del comentario
         comment.setBody(request.body());
@@ -99,7 +99,7 @@ public class CommentServiceImplementation implements ICommentService {
         // Verificar si el usuario tiene permisos para eliminar el comentario
         if (!comment.getUser().getUsername().equals(request.getUsername())) {
             throw new UnauthorizedException(Message.USER_NOT_AUTHORIZED, 401, HttpStatus.UNAUTHORIZED,
-                    Message.COMMENT_NOT_AUTHORIZED_TO_DELETE_COMMENT, LocalDateTime.now());
+                     LocalDateTime.now(), Message.COMMENT_NOT_AUTHORIZED_TO_DELETE_COMMENT);
         }
         // Eliminar el comentario
         commentRepository.delete(comment);
