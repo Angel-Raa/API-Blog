@@ -18,4 +18,9 @@ public class Message {
     public static final String PASSWORD_MIN_LENGTH = " The password must have at least 8 characters.";
 
     public static final String USERNAME_NOT_FOUND = "username not found" ;
+    public static final String PASSWORD_NOT_EMPTY ="password without blank space";
+    public static final String PASSWORD_NOT_MATCH_WITH_EMAIL ="password not match with email";
+    public static final String PASSWORD_NOT_MATCH_WITH_USERNAME_AND_EMAIL ="password not match with username and email";
+
+    public static final String USERNAME_NOT_EMPTY =  "Username cannot be empty";
 }

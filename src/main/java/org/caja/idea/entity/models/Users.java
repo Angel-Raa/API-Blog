@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 import org.caja.idea.entity.role.Role;
 import org.caja.idea.utils.constants.Message;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,12 +32,14 @@ public class Users implements UserDetails {
     @Column(length = 50, unique = true)
     @Size(min = 4, max = 50, message = Message.USERNAME_NOT_VALID)
     @NotBlank(message = Message.USERNAME_REQUIRED)
+    @NotEmpty(message = Message.USERNAME_NOT_EMPTY)
     private String username;
     @Email(message = Message.EMAIL_NOT_VALID)
     @NotBlank(message = Message.EMAIL_REQUIRED)
     @Column(length = 50, unique = true)
     private String email;
     @NotBlank(message = Message.PASSWORD_REQUIRED)
+    @NotEmpty(message = Message.PASSWORD_NOT_EMPTY)
     @Size(min = 8, message = Message.PASSWORD_MIN_LENGTH)
     private String password;
     @Column(name = "create_at", updatable = false)

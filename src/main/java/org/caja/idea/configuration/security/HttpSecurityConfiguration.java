@@ -30,7 +30,7 @@ public class HttpSecurityConfiguration {
                 .cors(AbstractHttpConfigurer::disable)
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                //.exceptionHandling(httpSecurityExceptionHandlingConfigure -> httpSecurityExceptionHandlingConfigure.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+                .exceptionHandling(httpSecurityExceptionHandlingConfigure -> httpSecurityExceptionHandlingConfigure.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .authorizeHttpRequests((api) -> {
                     api.requestMatchers("/error").permitAll();
                     api.requestMatchers(HttpMethod.POST, "/authentication/signup").permitAll();

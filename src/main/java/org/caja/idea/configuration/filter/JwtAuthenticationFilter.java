@@ -6,14 +6,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.caja.idea.configuration.jwt.JwtService;
 import org.caja.idea.entity.models.Users;
+import org.caja.idea.exception.InvalidTokenException;
 import org.caja.idea.repository.IUserRepository;
+import org.caja.idea.utils.constants.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Component
@@ -36,12 +40,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String jwtToken = header.split(" ")[1];
 
         // Validate the token
-        /*
         if(!service.isTokenValid(jwtToken)) {
-            return;
+            throw new InvalidTokenException(Message.INVALID_TOKEN,401, HttpStatus.UNAUTHORIZED, LocalDateTime.now());
         }
-        */
-
         // Validator y obtener el nombre de usuario de token JWT
         String username = service.extractUsername(jwtToken);
         Optional<Users> users = repository.findByUsername(username);
@@ -56,3 +57,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 }
+
+
