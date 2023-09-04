@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import org.caja.idea.entity.dto.postDto.AuthenticationPostRequest;
 import org.caja.idea.entity.dto.postDto.PostDTO;
+import org.caja.idea.entity.dto.postDto.PostListDto;
 import org.caja.idea.service.interfaces.IPostService;
 import org.caja.idea.utils.payload.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class PostController {
     @GetMapping("/all")
     public ResponseEntity<List<PostDTO>> getAllPosts() {
         return ResponseEntity.ok(service.findAllPost());
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<PostListDto>> getAllPostsList() {
+        return ResponseEntity.ok(service.allPost());
     }
     @GetMapping("/{id}")
     public ResponseEntity<PostDTO> getPostById(@Valid @PathVariable @Min(1) Long id) {

@@ -45,6 +45,7 @@ public class HttpSecurityConfiguration {
             api.requestMatchers(HttpMethod.POST, "/authentication/login").permitAll();
             api.requestMatchers(HttpMethod.GET, "/authentication/all").permitAll();
             api.requestMatchers(HttpMethod.GET, "/post/all").permitAll();
+            api.requestMatchers(HttpMethod.GET, "/post/list").permitAll();
             api.requestMatchers(HttpMethod.GET, "/post/{id}").permitAll();
             api.requestMatchers(HttpMethod.GET, "/post/find/{title}").permitAll();
             api.requestMatchers(HttpMethod.GET, "/comment/all").permitAll();

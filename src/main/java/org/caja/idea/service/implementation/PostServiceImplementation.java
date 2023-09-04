@@ -30,6 +30,15 @@ public class PostServiceImplementation  implements IPostService {
     private IPostRepository repository;
     @Autowired
     private IUserRepository userRepository;
+
+    @Override
+    public List<PostListDto> allPost() {
+        return repository.findAll().stream()
+                .map((dto) -> new PostListDto(dto.getUsers().getUsername(),
+                        dto.getTitle(), dto.getContent(), dto.getCreated(),
+                        dto.getUpdated(), dto.getComments().stream().toList())).toList();
+    }
+
     @Override
     @Transactional(readOnly = true)
     public List<PostDTO> findAllPost() {

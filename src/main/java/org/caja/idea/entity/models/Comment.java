@@ -1,5 +1,6 @@
 package org.caja.idea.entity.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.caja.idea.utils.constants.Message;
@@ -22,6 +23,7 @@ public class Comment {
     private Post post;
     @JoinColumn(name = "user_id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Users.class)
+    @JsonIgnore
     private Users user;
 
     public Comment() {}
