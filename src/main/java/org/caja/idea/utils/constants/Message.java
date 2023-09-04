@@ -23,4 +23,13 @@ public class Message {
     public static final String PASSWORD_NOT_MATCH_WITH_USERNAME_AND_EMAIL ="password not match with username and email";
 
     public static final String USERNAME_NOT_EMPTY =  "Username cannot be empty";
+    public static final String EMAIL_NOT_EMPTY =  "Email cannot be empty";
+    public static final String POST_NOT_FOUND = "Post not found";
+    public static final String COMMENT_NOT_FOUND = "Comment not found";
+    public static final String USER_NOT_AUTHORIZED = "User not authorized";
+    public static final String USER_NOT_AUTHORIZED_TO_DELETE_POST = "User not authorized to delete post";
+    public static final String TITLE_NOT_FOUND = "post title not found";
+    public static final String TITLE_ALREADY_EXISTS = "There is already a post with that title.";
+    public static final String TITLE_NOT_EMPTY = "Title cannot be empty";
+    public static final String POST_SAVE_SUCCESSFULLY = "post created successfully";
 }

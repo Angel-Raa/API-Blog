@@ -3,6 +3,7 @@ package org.caja.idea.entity.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+
 import org.caja.idea.utils.constants.Message;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,32 +11,35 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "post",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "title")
+        })
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 100)
+    @Column(length = 100, unique = true)
     @NotBlank(message = Message.TITLE_REQUIRED)
     private String title;
     private String content;
-    @Column(name ="created")
+    @Column(name ="create_at")
     @CreationTimestamp
-    private LocalDateTime created;
-    @Column(name ="updated")
+    private LocalDateTime createAt;
+    @Column(name ="update_at")
     @UpdateTimestamp
-    private LocalDateTime updated;
+    private LocalDateTime updateAt;
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Users.class)
     @JoinColumn(name = "author_id")
     private Users users;
 
-    public Post(Long id, String title, String content, LocalDateTime created, LocalDateTime updated, Users users) {
+    public Post(Long id, String title, String content, LocalDateTime createAt, LocalDateTime updateAt, Users users) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.created = created;
-        this.updated = updated;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
         this.users = users;
     }
 
@@ -67,19 +71,19 @@ public class Post {
     }
 
     public LocalDateTime getCreated() {
-        return created;
+        return createAt;
     }
 
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
+    public void setCreated(LocalDateTime createAt) {
+        this.createAt = createAt;
     }
 
     public LocalDateTime getUpdated() {
-        return updated;
+        return updateAt;
     }
 
     public void setUpdated(LocalDateTime updated) {
-        this.updated = updated;
+        this.updateAt = updated;
     }
 
     public Users getUsers() {
