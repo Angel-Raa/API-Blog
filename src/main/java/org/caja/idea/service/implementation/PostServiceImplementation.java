@@ -75,7 +75,7 @@ public class PostServiceImplementation  implements IPostService {
                 .orElseThrow(() -> new PostNotFoundException(Message.POST_NOT_FOUND, 404, HttpStatus.NOT_FOUND, LocalDateTime.now()));
         // Verificar si el usuario actual coincide con el autor del post
         if(!post.getUsers().getUsername().equals(postDTO.username())){
-            throw  new UnauthorizedException(Message.USER_NOT_AUTHORIZED, Message.WITHOUT_PERMISSION, HttpStatus.UNAUTHORIZED);
+            throw  new UnauthorizedException(Message.USER_NOT_AUTHORIZED, 401, HttpStatus.UNAUTHORIZED,  Message.WITHOUT_PERMISSION, LocalDateTime.now());
         }
         // Actualizar los campos del post con los valores proporcionados en postDTO
         post.setTitle(postDTO.title());
