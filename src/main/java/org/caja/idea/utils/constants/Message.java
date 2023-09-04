@@ -32,4 +32,17 @@ public class Message {
     public static final String TITLE_ALREADY_EXISTS = "There is already a post with that title.";
     public static final String TITLE_NOT_EMPTY = "Title cannot be empty";
     public static final String POST_SAVE_SUCCESSFULLY = "post created successfully";
+    public static final String POST_UPDATE_SUCCESSFULLY = "post updated successfully";
+    public static final String POST_DELETE_SUCCESSFULLY = "post deleted successfully";
+    public static final String WITHOUT_PERMISSION= "You do not have permission to update this post";
+    public static final String COMMENT_SAVE_SUCCESSFULLY = "comment created successfully";
+    public static final String COMMENT_UPDATE_SUCCESSFULLY = "comment updated successfully";
+    public static final String COMMENT_DELETE_SUCCESSFULLY = "comment deleted successfully";
+    public static final String COMMENT_NOT_EMPTY = "Comment cannot be empty";
+    public static final String COMMENT_NOT_AUTHORIZED = "Comment not authorized";
+    public static final String COMMENT_NOT_AUTHORIZED_TO_DELETE_COMMENT = "Comment not authorized to delete comment";
+    public static final String COMMENT_NOT_AUTHORIZED_TO_UPDATE_COMMENT = "Comment not authorized to update comment";
+    public static final String COMMENT_NOT_AUTHORIZED_TO_UPDATE_POST = "Comment not authorized to update post";
+    public static final String COMMENT_NOT_AUTHORIZED_TO_DELETE_POST = "Comment not authorized to delete post";
+
 }

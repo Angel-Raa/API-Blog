@@ -12,6 +12,9 @@ public interface IPostService {
     PostDTO findPostById(Long postId);
     PostDTO findPostByTitle(String title);
     ApiResponse createPost(PostDTO postDTO);
+    PostDTO update(PostDTO postDTO, Long postId);
+    ApiResponse delete(Long postId);
+    PostListDto findPostByUserId(Long userId);
 
     
     

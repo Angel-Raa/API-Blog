@@ -2,21 +2,20 @@ package org.caja.idea.entity.mapper;
 
 import org.caja.idea.entity.dto.postDto.PostDTO;
 import org.caja.idea.entity.models.Post;
-import org.mapstruct.*;
+import org.caja.idea.entity.models.Users;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface PostMapper {
-    Post toPost(PostDTO postDto);
-    PostDTO toPostDto(Post post);
-    @Mappings({
+public class PostMapper {
+    public static PostDTO toPostDto(Post post) {
+        return new PostDTO(post.getUsers().getUsername(), post.getId(), post.getTitle(), post.getContent(), post.getCreated(), post.getUpdated());
+    }
 
-            @Mapping(target = "id", ignore = true),
-            @Mapping(target = "users",  ignore = true),
-            @Mapping(target = "created", source = "dto.createAt"),
-            @Mapping(target = "updated", source = "dto.updateAt"),
-            @Mapping(target = "content", source = "dto.content"),
-            @Mapping(source = "dto.title", target = "title"),
-    })
-    Post updatePostFromDto(PostDTO dto, @MappingTarget Post post);
+    public static Post toPostDto(PostDTO postDTO, Users users) {
+        Post post = new Post();
+        post.setTitle(postDTO.title());
+        post.setContent(postDTO.content());
+        post.setUsers(users);
+        return post;
+    }
+
 
 }
