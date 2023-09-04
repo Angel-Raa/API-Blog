@@ -39,7 +39,8 @@ public class JwtService {
     }
 
     private Key generatorKey() {
-        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_KEY));
+        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 
     public Map<String, Object> generateExtraClaims(Users user) {
@@ -66,7 +67,7 @@ public class JwtService {
            return Jwts.parserBuilder()
                    .setSigningKey(generatorKey())
                    .build()
-                   .parseClaimsJwt(token)
+                   .parseClaimsJws(token)
                    .getBody()
                    .getExpiration()
                    .after(new Date());

@@ -2,6 +2,7 @@ package org.caja.idea.configuration.security;
 
 import org.caja.idea.configuration.filter.JwtAuthenticationEntryPoint;
 import org.caja.idea.configuration.filter.JwtAuthenticationFilter;
+import org.caja.idea.entity.role.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,9 +47,23 @@ public class HttpSecurityConfiguration {
             api.requestMatchers(HttpMethod.GET, "/post/all").permitAll();
             api.requestMatchers(HttpMethod.GET, "/post/{id}").permitAll();
             api.requestMatchers(HttpMethod.GET, "/post/find/{title}").permitAll();
-            api.requestMatchers(HttpMethod.POST, "/post/create").permitAll();
+
+            // Post
+            api.requestMatchers(HttpMethod.POST, "/post/create").hasAnyAuthority(Permission.USER.name());
+            api.requestMatchers(HttpMethod.PUT, "/post/update/{id}").hasAnyAuthority(Permission.USER.name());
+            api.requestMatchers(HttpMethod.DELETE, "/post/delete/{id}").hasAnyAuthority(Permission.USER.name());
+            //Comment
             api.anyRequest().denyAll();
         };
     }
 
 }
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 package org.caja.idea.service.implementation;
 
+import org.caja.idea.entity.dto.postDto.AuthenticationPostRequest;
 import org.caja.idea.entity.dto.postDto.PostDTO;
 import org.caja.idea.entity.dto.postDto.PostListDto;
 import org.caja.idea.entity.mapper.PostMapper;
@@ -34,7 +35,7 @@ public class PostServiceImplementation  implements IPostService {
     public List<PostDTO> findAllPost() {
         return repository.findAll()
                 .stream()
-                .map((dto) -> new PostDTO(dto.getUsers().getUsername(), dto.getId(), dto.getTitle(), dto.getContent(),
+                .map((dto) -> new PostDTO(dto.getId(),dto.getUsers().getUsername(), dto.getTitle(), dto.getContent(),
                         dto.getCreated(), dto.getUpdated()))
                 .toList();
     }
@@ -86,17 +87,15 @@ public class PostServiceImplementation  implements IPostService {
 
     @Override
     @Transactional
-    public ApiResponse delete(Long postId) {
+    public ApiResponse delete(Long postId, AuthenticationPostRequest request) {
         Post post = repository.findById(postId)
                 .orElseThrow(() -> new PostNotFoundException(Message.POST_NOT_FOUND, 404, HttpStatus.NOT_FOUND, LocalDateTime.now()));
+        if(!post.getUsers().getUsername().equals(request.getUsername())){
+            throw new UnauthorizedException(Message.UNAUTHORIZED_DELETE_MESSAGE, 401, HttpStatus.UNAUTHORIZED,  Message.UNAUTHORIZED_PERMISSION_MESSAGE, LocalDateTime.now());
+        }
         repository.delete(post);
         return new ApiResponse(Message.POST_DELETE_SUCCESSFULLY, 200, HttpStatus.OK, LocalDateTime.now());
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public PostListDto findPostByUserId(Long userId) {
-        return null;
-    }
 
 }

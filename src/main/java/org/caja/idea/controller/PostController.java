@@ -1,6 +1,8 @@
 package org.caja.idea.controller;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import org.caja.idea.entity.dto.postDto.AuthenticationPostRequest;
 import org.caja.idea.entity.dto.postDto.PostDTO;
 import org.caja.idea.service.interfaces.IPostService;
 import org.caja.idea.utils.payload.ApiResponse;
@@ -23,7 +25,7 @@ public class PostController {
         return ResponseEntity.ok(service.findAllPost());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<PostDTO> getPostById(@Valid @PathVariable Long id) {
+    public ResponseEntity<PostDTO> getPostById(@Valid @PathVariable @Min(1) Long id) {
         return ResponseEntity.ok(service.findPostById(id));
     }
     @GetMapping("/find/{title}")
@@ -35,4 +37,16 @@ public class PostController {
     public ResponseEntity<ApiResponse> createPost(@Valid @RequestBody PostDTO postDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createPost(postDTO));
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<PostDTO> updatePost(@Valid @RequestBody PostDTO postDTO, @PathVariable @Min(1) Long id) {
+        return ResponseEntity.ok(service.update(postDTO, id));
+    }
+
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ApiResponse> deletePost(@Valid @PathVariable @Min(1) Long id, @RequestBody AuthenticationPostRequest request) {
+        return ResponseEntity.ok(service.delete(id, request));
+    }
+
 }
