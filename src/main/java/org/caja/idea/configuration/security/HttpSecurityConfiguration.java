@@ -47,12 +47,17 @@ public class HttpSecurityConfiguration {
             api.requestMatchers(HttpMethod.GET, "/post/all").permitAll();
             api.requestMatchers(HttpMethod.GET, "/post/{id}").permitAll();
             api.requestMatchers(HttpMethod.GET, "/post/find/{title}").permitAll();
+            api.requestMatchers(HttpMethod.GET, "/comment/all").permitAll();
+            api.requestMatchers(HttpMethod.GET, "/comment/{id}").permitAll();
 
             // Post
             api.requestMatchers(HttpMethod.POST, "/post/create").hasAnyAuthority(Permission.USER.name());
             api.requestMatchers(HttpMethod.PUT, "/post/update/{id}").hasAnyAuthority(Permission.USER.name());
             api.requestMatchers(HttpMethod.DELETE, "/post/delete/{id}").hasAnyAuthority(Permission.USER.name());
             //Comment
+            api.requestMatchers(HttpMethod.POST, "/comment/create/{postId}").hasAnyAuthority(Permission.USER.name());
+            api.requestMatchers(HttpMethod.PUT, "/comment/update/{commentId}").hasAnyAuthority(Permission.USER.name());
+            api.requestMatchers(HttpMethod.DELETE, "/comment/delete/{commentId}").hasAnyAuthority(Permission.USER.name());
             api.anyRequest().denyAll();
         };
     }

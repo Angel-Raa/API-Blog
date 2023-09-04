@@ -20,15 +20,18 @@ public class Comment {
     @JoinColumn(name = "post_id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Post.class)
     private Post post;
+    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Users.class)
+    private Users user;
 
     public Comment() {}
 
-    public Comment(Long id, String body, LocalDateTime created, Post post) {
+    public Comment(Long id, String body, LocalDateTime created, Post post, Users user) {
         this.id = id;
         this.body = body;
         this.created = created;
-
         this.post = post;
+        this.user = user;
     }
 
     public Long getId() {
@@ -55,13 +58,19 @@ public class Comment {
         this.created = created;
     }
 
-
-
     public Post getPost() {
         return post;
     }
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 }
