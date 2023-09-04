@@ -17,20 +17,17 @@ public class Comment {
     @Column(name = "created")
     @CreationTimestamp
     private LocalDateTime created;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Users.class)
-    @JoinColumn(name = "user_id")
-    private Users users;
     @JoinColumn(name = "post_id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Post.class)
     private Post post;
 
     public Comment() {}
 
-    public Comment(Long id, String body, LocalDateTime created, Users users, Post post) {
+    public Comment(Long id, String body, LocalDateTime created, Post post) {
         this.id = id;
         this.body = body;
         this.created = created;
-        this.users = users;
+
         this.post = post;
     }
 
@@ -58,13 +55,7 @@ public class Comment {
         this.created = created;
     }
 
-    public Users getUsers() {
-        return users;
-    }
 
-    public void setUsers(Users users) {
-        this.users = users;
-    }
 
     public Post getPost() {
         return post;

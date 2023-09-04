@@ -3,6 +3,7 @@ package org.caja.idea.service.implementation;
 import org.caja.idea.configuration.jwt.JwtService;
 import org.caja.idea.entity.dto.userDTO.AuthenticationRequest;
 import org.caja.idea.entity.dto.userDTO.AuthenticationResponse;
+import org.caja.idea.entity.dto.userDTO.AuthorizationRequest;
 import org.caja.idea.entity.dto.userDTO.UserDTO;
 import org.caja.idea.entity.models.Users;
 import org.caja.idea.entity.role.Role;
@@ -16,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +27,7 @@ import java.util.List;
 @Service
 public class UserServiceImplementation implements IUserService {
     @Autowired
-    private PasswordEncoder encoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private IUserRepository repository;
     @Autowired
@@ -35,7 +36,7 @@ public class UserServiceImplementation implements IUserService {
     private JwtService jwtService;
     @Override
     @Transactional
-    public AuthenticationResponse login(AuthenticationRequest request) {
+    public AuthenticationResponse login(AuthorizationRequest request) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 request.getUsername(), request.getPassword());
         authenticationManager.authenticate(authenticationToken);
@@ -54,7 +55,7 @@ public class UserServiceImplementation implements IUserService {
         if(repository.existsByEmail(email)){
             throw new EmailAlreadyExistsException(Message.EMAIL_ALREADY_EXISTS,400, HttpStatus.BAD_REQUEST, LocalDateTime.now());
         }
-        else  if (repository.existsByUsername(username)){
+        else if (repository.existsByUsername(username)){
             throw new UsernameAlreadyExistsException(Message.USERNAME_ALREADY_EXISTS,400, HttpStatus.BAD_REQUEST, LocalDateTime.now());
         }
         Users users = toUser(email, username, password);
@@ -78,7 +79,7 @@ public class UserServiceImplementation implements IUserService {
         Users users = new Users();
         users.setEmail(email);
         users.setUsername(username);
-        users.setPassword(encoder.encode(password));
+        users.setPassword(bCryptPasswordEncoder.encode(password));
         users.setRole(Role.USER);
         repository.save(users);
         return users;

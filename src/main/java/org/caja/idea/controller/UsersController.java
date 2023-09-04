@@ -3,6 +3,7 @@ package org.caja.idea.controller;
 import jakarta.validation.Valid;
 import org.caja.idea.entity.dto.userDTO.AuthenticationRequest;
 import org.caja.idea.entity.dto.userDTO.AuthenticationResponse;
+import org.caja.idea.entity.dto.userDTO.AuthorizationRequest;
 import org.caja.idea.entity.dto.userDTO.UserDTO;
 import org.caja.idea.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,12 @@ public class UsersController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(@Valid @RequestBody AuthenticationRequest request){
+    public ResponseEntity<AuthenticationResponse> login(@Valid @RequestBody AuthorizationRequest request){
         return ResponseEntity.ok(service.login(request));
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthenticationResponse> register(@Valid @RequestBody AuthenticationRequest request){
+    public ResponseEntity<AuthenticationResponse> signUp(@Valid @RequestBody AuthenticationRequest request){
         return ResponseEntity.ok(service.signup(request));
     }
 

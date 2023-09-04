@@ -23,8 +23,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private  JwtService service;
 
-
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
@@ -34,20 +32,27 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-        // Extraer el token del header
-        String jwtToken = header.replace("Bearer ", "");
+        // Extra el token del header
+        String jwtToken = header.split(" ")[1];
 
-        // Validar y obtener el nombre de usuario de token JWT
+        // Validate the token
+        /*
+        if(!service.isTokenValid(jwtToken)) {
+            return;
+        }
+        */
+
+        // Validator y obtener el nombre de usuario de token JWT
         String username = service.extractUsername(jwtToken);
         Optional<Users> users = repository.findByUsername(username);
         if (users.isPresent()) {
             Users user = users.get();
-            // Crear el objeto de autenticación
+            // Carer el objet de authenticate
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, null, user.getAuthorities());
-            // Configurar la autenticación en el contexto de spring security
+            // Configure la authenticate en el contexto de spring security
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
-        // Continuar con la cadena de filtros
+        // Continual con la cadenza de filtrates
         filterChain.doFilter(request, response);
     }
 }

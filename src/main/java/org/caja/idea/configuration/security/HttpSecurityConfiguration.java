@@ -5,6 +5,7 @@ import org.caja.idea.configuration.filter.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -29,9 +30,13 @@ public class HttpSecurityConfiguration {
                 .cors(AbstractHttpConfigurer::disable)
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+                //.exceptionHandling(httpSecurityExceptionHandlingConfigure -> httpSecurityExceptionHandlingConfigure.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .authorizeHttpRequests((api) -> {
                     api.requestMatchers("/error").permitAll();
+                    api.requestMatchers(HttpMethod.POST, "/authentication/signup").permitAll();
+                    api.requestMatchers(HttpMethod.POST, "/authentication/login").permitAll();
+                    api.requestMatchers(HttpMethod.GET, "/authentication/all").permitAll();
+                    api.anyRequest().authenticated();
                 });
         return http.build();
     }

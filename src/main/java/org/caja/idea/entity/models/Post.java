@@ -1,5 +1,6 @@
 package org.caja.idea.entity.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.caja.idea.utils.constants.Message;
@@ -24,6 +25,7 @@ public class Post {
     @Column(name ="updated")
     @UpdateTimestamp
     private LocalDateTime updated;
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Users.class)
     @JoinColumn(name = "author_id")
     private Users users;

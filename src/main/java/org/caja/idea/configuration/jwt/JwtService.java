@@ -1,10 +1,12 @@
 package org.caja.idea.configuration.jwt;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
 import org.caja.idea.entity.models.Users;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,48 +18,63 @@ import java.util.Map;
 
 @Service
 public class JwtService {
-    @Value("${spring.security.secrets.key}")
-    private String SECRETE_KEY;
-    @Value("${spring.jwt.expired}")
-    private long EXPIRATION_IN_SECONDS_MILLIS;
+    @Value("${security.jwt.expiration}")
+    private long EXPIRATION;
 
-    public String generateToken(Users username, Map<String, Object> claims) {
-        Date issuedAt = new Date(System.currentTimeMillis());
-        Date expiration = new Date(issuedAt.getTime() + EXPIRATION_IN_SECONDS_MILLIS * 60 * 1000);
+    @Value("${security.jwt.secret-key}")
+    private String SECRET_KEY;
+
+    public String generateToken(Users user, Map<String, Object> claims) {
+        Date issued = new Date(System.currentTimeMillis());
+        Date expiration = new Date(issued.getTime() + (EXPIRATION * 60 * 1000));
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(username.getUsername())
-                .setIssuedAt(issuedAt)
+                .setSubject(user.getUsername())                
+                .setIssuedAt(issued)
                 .setExpiration(expiration)
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                .signWith(generateKey(), SignatureAlgorithm.HS256)
+                .signWith(generatorKey(), SignatureAlgorithm.HS256)
                 .compact();
+
     }
 
-    private Key generateKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRETE_KEY);
-        return Keys.hmacShaKeyFor(keyBytes);
+    private Key generatorKey() {
+        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_KEY));
     }
 
-    public Map<String, Object> generateExtraClaims(Users users) {
+    public Map<String, Object> generateExtraClaims(Users user) {
         Map<String, Object> extraClaims = new HashMap<>();
-        extraClaims.put("username", users.getUsername());
-        extraClaims.put("email", users.getEmail());
-        extraClaims.put("Role", users.getRole());
-        extraClaims.put("Permission", users.getAuthorities());
+        extraClaims.put("username", user.getUsername());
+        extraClaims.put("email", user.getEmail());
+        extraClaims.put("Role", user.getRole().name());
+        extraClaims.put("permissions", user.getAuthorities());
         return extraClaims;
     }
 
     public String extractUsername(String jwt) {
-        return extractAllClaims(jwt);
+        return extractAllClaims(jwt).getSubject();
     }
 
-    private String extractAllClaims(String jwt) {
+    private Claims extractAllClaims(String jwt) {
         return Jwts.parserBuilder()
-                .setSigningKey(generateKey())
-                .build()
-                .parseClaimsJws(jwt)
-                .getBody()
-                .getSubject();
+                .setSigningKey(generatorKey()).build()
+                .parseClaimsJws(jwt).getBody();
     }
+
+    public boolean isTokenValid(String token){
+       try {
+           return Jwts.parserBuilder()
+                   .setSigningKey(generatorKey())
+                   .build()
+                   .parseClaimsJwt(token)
+                   .getBody()
+                   .getExpiration()
+                   .after(new Date());
+       }catch (SignatureException e){
+           System.out.println("JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.");
+           return false;
+       }
+    }
+
+
 }
