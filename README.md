@@ -76,6 +76,37 @@ docker compose up -d
             "jwt": "TOKEN_JWT",
             "status":"CREATED"
         }
+- **Obtener todos los usuario:** `Endpoint: GET /authentication/all`
+    - Respuesta Exitosa:
+      ```json
+      {
+
+            [
+    {
+        "id": 1,
+        "username": "angel",
+        "email": "angel@gmail.com",
+        "createAt": "2023-09-05T01:49:15.016076",
+        "updateAt": "2023-09-05T01:49:15.016335"
+    },
+    {
+        "id": 2,
+        "username": "admin",
+        "email": "admin@gmail.com",
+        "createAt": "2023-09-05T01:52:34.307614",
+        "updateAt": "2023-09-05T01:52:34.307684"
+    },
+    {
+        "id": 3,
+        "username": "alba",
+        "email": "alba@gmail.com",
+        "createAt": "2023-09-05T02:24:01.017702",
+        "updateAt": "2023-09-05T02:24:01.017821"
+    }
+  ]      
+      
+      }
+      ```
 
 ## Recursos Adicionales
 
