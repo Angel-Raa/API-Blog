@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import jakarta.validation.constraints.Size;
 import org.caja.idea.utils.constants.Message;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -24,6 +25,8 @@ public class Post {
     @Column(length = 100, unique = true)
     @NotBlank(message = Message.TITLE_REQUIRED)
     private String title;
+    @Column(length = 25000)
+    @Size(max = 25000, message = Message.CONTENT_MAX_LENGTH)
     private String content;
     @Column(name ="create_at")
     @CreationTimestamp

@@ -53,5 +53,6 @@ public class Message {
     public static final String UNAUTHORIZED_DELETE_MESSAGE = "You are not authorized to delete this post";
     public static final String UNAUTHORIZED_PERMISSION_MESSAGE = "You do not have permission to perform this action";
     public static final String EXPIRED_TOKEN = "invalid token";
+    public static final String CONTENT_MAX_LENGTH = "Content must not exceed 25000 characters";
 
 }
