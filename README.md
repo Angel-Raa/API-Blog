@@ -324,6 +324,15 @@ Descripción: Este endpoint devuelve una lista de todos Post, incluyendo los com
 
 ## Endpoints de Comment 
 
+| Método   | Endpoint                               | Descripción                                      |
+|----------|----------------------------------------|--------------------------------------------------|
+| GET      | `/comment/all`                         | Obtener todos los comentarios                    |
+| GET      | `/comment/{commentId}`                 | Obtener un comentario por ID                     |
+| POST     | `/comment/create/{PostId}`             | Crear un comentario en un publicación            |
+| PUT      | `/comment/update/{commentId}`          | Actualizar un comentario por ID                  |
+| DELETE   | `/comment/delete/{commentId}`          | Eliminar un comentario por ID                    |
+
+
 - **Obtener Todos los Comment:** `Endpoint: GET /comment/all`
   
 Descripción: Este endpoint permite obtener una lista de todos los Comment.
@@ -429,7 +438,7 @@ Descripción: Este endpoint permite actualizar un Comment existente  mediante su
       }
       ```
 
-- **Eliminar un Commetn por ID:** `ndpoint: DELETE /comment/delete/{commentID}`
+- **Eliminar un Comment por ID:** `ndpoint: DELETE /comment/delete/{commentID}`
  
 Descripción: Este endpoint permite eliminar un Comment existente  mediante su ID.
     - Parámetros de la Solicitud:
