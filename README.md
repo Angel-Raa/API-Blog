@@ -74,7 +74,7 @@ Se requiere autenticación para acceder a los endpoints de esta API. Puedes obte
         ```json
         {
             "username": "angel",
-            "password": "admin"
+            "password": "admin",
             "email":"alba@gmail.com"
         }
         ```
