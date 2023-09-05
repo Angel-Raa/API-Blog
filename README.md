@@ -217,7 +217,33 @@ docker compose up -d
         }
       }
       ```
+- **Actualizar Post por ID:** `Endpoint: PUT /post/update/{id}`
+    - Parámetros de la Solicitud:
+      - `{id}` (Path Parameter): El ID del Post que se desea actualizar.
+          -  Cuerpo de la Solicitud:
+        ```json
+        {
 
+           {
+              "username": "alba",
+              "title": "que son tipos de datos java",
+              "content": "Los tipos de datos en Java son un formato de almacenamiento de datos que puede contener un tipo específico o rango de valores."
+            }
+          
+        }
+        ```
+    - Respuesta Exitosa:
+         ```json
+        {
+
+           {
+              "username": "alba",
+              "title": "que son tipos de datos java",
+              "content": "Los tipos de datos en Java son un formato de almacenamiento de datos que puede contener un tipo específico o rango de valores Cuando una aplicación o un programa informático almacena datos en variables, a cada variable se le debe asignar un tipo de datos específico."
+            }
+          
+        }
+        ```
 
 ## Recursos Adicionales
 
