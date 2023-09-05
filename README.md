@@ -54,11 +54,28 @@ docker compose up -d
     - Respuesta exitosa:
         ```json
         {
-            "message":"register successfully",
-            "jwt": "TOKEN_JWT",
-             "status":"CREATED"
+             "message":"login successfully",
+             "jwt": "TOKEN_JWT",
+             "status":"OK"
         }
         ```
+        
+- **Registro de usuario:** `POST /authentication/sign`
+    - Cuerpo de la solicitud:
+        ```json
+        {
+            "username": "angel",
+            "password": "admin"
+            "email":"alba@gmail.com"
+        }
+        ```
+    - Respuesta exitosa:
+        ```json
+        {
+            "message":"register successfully",
+            "jwt": "TOKEN_JWT",
+            "status":"CREATED"
+        }
 
 ## Recursos Adicionales
 
