@@ -1,4 +1,4 @@
-# Restful CRUD Blog API usando Spring Boot 3, Spring Security 6, JWT, PostgreSQL, JPA 
+# Restful CRUD Blog API usando Spring Boot 3, Spring Security 6, JWT, PostgreSQL y  Spring Data Jpa
 
 Este proyecto representa un caso de uso de una aplicación Restful API, desarrollada con  Java 17, Spring Boot 3, Spring Security 6, JWT (JSON Web Tokens),  PostgreSQL y Spring Data Jpa.
 
