@@ -322,8 +322,32 @@ Descripción: Este endpoint devuelve una lista de todos Post, incluyendo los com
     }
     ``` 
 
+## Endpoints de Comment 
 
+- **Obtener Todos los Comment:** `Endpoint: GET /comment/all`
+  
+Descripción: Este endpoint permite obtener una lista de todos los comentarios en el sistema.
 
+- Respuesta Exitosa:
+  ```json
+  {
+
+    [
+            {
+                "id": 1,
+                "username": "angel",
+                "body": "excelente contenido",
+            "    created": "2023-09-05T01:52:07.086776"
+            },
+            {
+                "id": 4,
+                "username": "admin",
+                "body": "muy buen articulos",
+                "created": "2023-09-05T01:57:26.710532"
+            }
+        ]
+  }
+  ```
 
 
 
