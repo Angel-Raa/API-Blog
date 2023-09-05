@@ -244,7 +244,28 @@ docker compose up -d
           
         }
         ```
-
+- **Eliminar Post por ID:**  `Endpoint: DELETE /post/delete/{id}`
+    - Parámetros de la Solicitud:
+       - `{id}` (Path Parameter): El ID del Post eliminar.
+     - Cuerpo de la Solicitud:
+         ```json
+         {
+           {
+             "username":"alba"
+           {
+         }
+         ```
+  - Respuesta Exitosa:
+    ```json
+    {
+       {
+          "message": "post deleted successfully",
+          "code": 200,
+          "http": "OK",
+          "time": "05-09-2023 03:44:36"
+        }
+    }
+    ```
 ## Recursos Adicionales
 
 Aquí hay algunos recursos adicionales que podrían ser útiles:
