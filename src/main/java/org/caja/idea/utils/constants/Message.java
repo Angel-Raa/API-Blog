@@ -1,6 +1,11 @@
 package org.caja.idea.utils.constants;
 
 public class Message {
+    public static final String LOGIN_SUCCESSFULLY = "login successfully";
+    public static final String LOGOUT_SUCCESSFULLY = "logout successfully";
+    public static final String REGISTER_SUCCESSFULLY = "register successfully";
+    public static final String REGISTER_FAILED = "register failed";
+
     public static final String TITLE_REQUIRED = "Title is required";
     public static final String BODY_REQUIRED = "Body is required";
     public static final String USERNAME_REQUIRED = "Username is required";
@@ -47,5 +52,6 @@ public class Message {
     public static final String POST_DELETE_SUCCESS_MESSAGE = "Post has been successfully removed";
     public static final String UNAUTHORIZED_DELETE_MESSAGE = "You are not authorized to delete this post";
     public static final String UNAUTHORIZED_PERMISSION_MESSAGE = "You do not have permission to perform this action";
+    public static final String EXPIRED_TOKEN = "invalid token";
 
 }

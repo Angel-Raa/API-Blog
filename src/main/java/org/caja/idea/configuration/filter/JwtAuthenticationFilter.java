@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.caja.idea.configuration.jwt.JwtService;
 import org.caja.idea.entity.models.Users;
+import org.caja.idea.exception.ExpiredJwtException;
 import org.caja.idea.exception.InvalidTokenException;
 import org.caja.idea.repository.IUserRepository;
 import org.caja.idea.utils.constants.Message;
@@ -36,25 +37,29 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-        // Extra el token del header
-        String jwtToken = header.split(" ")[1];
+        try {
+            // Extra el token del header
+            String jwtToken = header.split(" ")[1];
 
-        // Validate the token
-        if(!service.isTokenValid(jwtToken)) {
-            throw new InvalidTokenException(Message.INVALID_TOKEN,401, HttpStatus.UNAUTHORIZED, LocalDateTime.now());
+            // Validate the token
+            if(!service.isTokenValid(jwtToken)) {
+                throw new InvalidTokenException(Message.INVALID_TOKEN,401, HttpStatus.UNAUTHORIZED, LocalDateTime.now());
+            }
+            // Validator y obtener el nombre de usuario de token JWT
+            String username = service.extractUsername(jwtToken);
+            Optional<Users> users = repository.findByUsername(username);
+            if (users.isPresent()) {
+                Users user = users.get();
+                // Carer el objet de authenticate
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, null, user.getAuthorities());
+                // Configure la authenticate en el contexto de spring security
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            }
+            // Continual con la cadenza de filtrates
+            filterChain.doFilter(request, response);
+        }catch (ExpiredJwtException error){
+            throw new InvalidTokenException(Message.EXPIRED_TOKEN,401, HttpStatus.UNAUTHORIZED, LocalDateTime.now());
         }
-        // Validator y obtener el nombre de usuario de token JWT
-        String username = service.extractUsername(jwtToken);
-        Optional<Users> users = repository.findByUsername(username);
-        if (users.isPresent()) {
-            Users user = users.get();
-            // Carer el objet de authenticate
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, null, user.getAuthorities());
-            // Configure la authenticate en el contexto de spring security
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-        }
-        // Continual con la cadenza de filtrates
-        filterChain.doFilter(request, response);
     }
 }
 

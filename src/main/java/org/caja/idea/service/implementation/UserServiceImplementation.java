@@ -43,7 +43,7 @@ public class UserServiceImplementation implements IUserService {
         Users users = repository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new UserNotFoundException(Message.USERNAME_NOT_FOUND,404, HttpStatus.NOT_FOUND, LocalDateTime.now()));
         String jwt = jwtService.generateToken(users, jwtService.generateExtraClaims(users));
-        return new AuthenticationResponse(jwt);
+        return new AuthenticationResponse(Message.LOGIN_SUCCESSFULLY,jwt, HttpStatus.OK);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class UserServiceImplementation implements IUserService {
         }
         Users users = toUser(email, username, password);
         String jwt = jwtService.generateToken(users, jwtService.generateExtraClaims(users));
-        return new AuthenticationResponse(jwt);
+        return new AuthenticationResponse(Message.REGISTER_SUCCESSFULLY,jwt, HttpStatus.CREATED);
     }
 
 
