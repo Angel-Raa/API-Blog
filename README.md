@@ -431,7 +431,7 @@ Descripción: Este endpoint permite actualizar un Comment existente  mediante su
       }
       ```
 
-- **Eliminar un Commten por ID:** `ndpoint: DELETE /comment/delete/{commentID}`
+- **Eliminar un Commetn por ID:** `ndpoint: DELETE /comment/delete/{commentID}`
  
 Descripción: Este endpoint permite eliminar un Comment existente  mediante su ID.
     - Parámetros de la Solicitud:
@@ -439,22 +439,25 @@ Descripción: Este endpoint permite eliminar un Comment existente  mediante su I
     - Cuerpo de la Solicitud:
         ```json
         {
+
             {
                 "username": "alba"
             }
         }
         ```
-    - Respuesta Exitosa:
-        ```json
+        
+- Respuesta Exitosa:
+    ```json
+    {
         {
-            {
-                "message": "comment deleted successfully",
-                "code": 200,
-                "http": "OK",
-                "time": "05-09-2023 01:11:32"
-            }        
+            "message": "comment deleted successfully",
+            "code": 200,
+            "http": "OK",
+            "time": "05-09-2023 01:11:32"
         }
-        ```
+    }
+    ```  
+        
 ## Recursos Adicionales
 
 Aquí hay algunos recursos adicionales que podrían ser útiles:
