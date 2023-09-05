@@ -35,7 +35,30 @@ cd CRestful-CRUD-Blog-API-Spring-Boot-3
 ```
 docker compose up -d
 ```
+### Documentación de los Endpoints
 
+### Base URL
+
+- [http://localhost:2020](http://localhost:2020)
+
+## Autenticación
+
+- **Iniciar sesión de usuario:** `POST /authentication/login`
+    - Cuerpo de la solicitud:
+        ```json
+        {
+            "username": "alba",
+            "password": "alba"
+        }
+        ```
+    - Respuesta exitosa:
+        ```json
+        {
+            "message":"register successfully",
+            "jwt": "TOKEN_JWT",
+             "status":"CREATED"
+        }
+        ```
 
 ## Recursos Adicionales
 
