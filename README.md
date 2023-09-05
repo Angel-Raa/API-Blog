@@ -157,9 +157,9 @@ docker compose up -d
             }
           ]
       }
-        ```
+       ```
 
-- **Obtener un Mensaje de Publicación por ID:** `Endpoint: GET /post/{id} `
+- **Obtener un Post por ID:** `Endpoint: GET /post/{id} `
     - Parámetros de la Solicitud:
         - `{id}` (Path Parameter): El ID del mensaje de publicación que se desea obtener.
     - Respuesta Exitosa:
@@ -174,7 +174,24 @@ docker compose up -d
             "updateAt": "2023-09-05T01:49:41.902698"
           }
         }
-          ```
+         ```
+- **Buscar Post por Título** `Endpoint: GET /post/find/{title}`
+    - Parámetros de la Solicitud:
+      - `{title}` (Path Parameter): El título del POst que se desea buscar.
+    - Respuesta Exitosa:
+        ```json
+        {
+          {
+            "id": 3,
+            "username": "angel",
+            "title": "que en git",
+            "content": "GIT es el SCV (sistema de control de versiones) de código abierto más utilizado que te permite rastrear los cambios realizados en los archivos. Las empresas y los     
+             programadores   suelen utilizar el GIT para colaborar en el desarrollo de software y aplicaciones.",
+            "createAt": "2023-09-05T01:51:51.602443",
+            "updateAt": "2023-09-05T01:51:51.602491"
+          }
+        } 
+        ```
 
 ## Recursos Adicionales
 
