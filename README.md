@@ -382,8 +382,8 @@ Descripción: Este endpoint permite crear un nuevo Comment en un Post específic
       {
 
         {
-            "username": "admin",
-            "body": "muy buen artículo"
+            "username": "alba",
+            "body": "Cuáles son las ventajas características principales de Git ?"
         }
 
       }
@@ -401,6 +401,60 @@ Descripción: Este endpoint permite crear un nuevo Comment en un Post específic
 
     }
     ```
+
+- **Actualizar un Comment por ID:** `Endpoint: PUT /comment/update/{commentId}`
+Descripción: Este endpoint permite actualizar un Comment existente  mediante su ID
+
+    - Parámetros de la Solicitud:
+      `{commentId}` (Path Parameter): El ID del Comment que se desea actualizar.
+
+    - Cuerpo de la Solicitud:
+      ```json
+      {
+
+        {
+            "username": "alba",
+            "body": "Cuáles son las ventajas características principales de Git y Quién creó Git?"
+        }
+
+      }
+      ```
+  - Respuesta Exitosa:
+    ```json
+      {
+
+        {
+            "username": "alba",
+            "body": "Cuáles son las ventajas características principales de Git y Quién creó Git?"
+        }
+
+      }
+      ```
+
+- **Eliminar un Commten por ID:** `ndpoint: DELETE /comment/delete/{commentID}`
+ 
+Descripción: Este endpoint permite eliminar un Comment existente  mediante su ID.
+    - Parámetros de la Solicitud:
+        `{commentID}` (Path Parameter): El ID del comment que se desea eliminar.
+    - Cuerpo de la Solicitud:
+        ```json
+        {
+            {
+                "username": "alba"
+            }
+        }
+        ```
+    - Respuesta Exitosa:
+        ```json
+        {
+            {
+                "message": "comment deleted successfully",
+                "code": 200,
+                "http": "OK",
+                "time": "05-09-2023 01:11:32"
+            }        
+        }
+        ```
 ## Recursos Adicionales
 
 Aquí hay algunos recursos adicionales que podrían ser útiles:
