@@ -377,16 +377,15 @@ Descripción: Este endpoint permite crear un nuevo Comment en un Post específic
     - Parámetros de la Solicitud:
       - `{PostId}` (Path Parameter): El ID del Post en el que se desea crear el Comment.
 
-     - Cuerpo de la Solicitud:
-           ```json
-          {
-
-            {    
+   - Cuerpo de la Solicitud:
+     ```json
+     {
+             {    
                 "username": "alba",
                 "body": "Cuáles son las ventajas características principales de Git ?"
             }
-          }
-          ```
+     }
+     ```      
   - Respuesta Exitosa:
     ```json
     {
