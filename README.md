@@ -280,7 +280,9 @@ Se requiere autenticación para acceder a los endpoints de esta API. Puedes obte
 
 
 - **Listar Todos los  Post:** `Endpoint: GET /post/list `
+  
 Descripción: Este endpoint devuelve una lista de todos Post, incluyendo los comentarios asociados a cada post.
+
   - Respuesta Exitosa:
     ```json
     {
