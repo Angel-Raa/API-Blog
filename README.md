@@ -1,11 +1,12 @@
 # Restful CRUD Blog API usando Spring Boot 3, Spring Security 6, JWT, PostgreSQL, JPA 
 
-Este proyecto representa un caso de uso de una aplicación Restful API, desarrollada con  Java 17, Spring Boot 3, Spring Security 6, JWT (JSON Web Tokens),  PostgreSQL y  JPA (Java Persistence API).
+Este proyecto representa un caso de uso de una aplicación Restful API, desarrollada con  Java 17, Spring Boot 3, Spring Security 6, JWT (JSON Web Tokens),  PostgreSQL y  Spring Data Jpa.
 
 ## Tecnologías Utilizadas
 
 - JDK 17
 - Spring Boot 3
+- Spring Data Jpa
 - Spring security 6
 - PostgreSQL 15
 - Java JWT
@@ -125,7 +126,7 @@ Se requiere autenticación para acceder a los endpoints de esta API. Puedes obte
 | GET      | `/post/find/{title}`           | Buscar post por título                           |
 | PUT      | `/post/update/{id}`            | Actualizar un mensaje de post por ID             |
 | DELETE   | `/post/delete/{id}`            | Eliminar post por ID                             |
-| POST     | `/post/all`                    | Obtener todos los  post                          |
+| GET     | `/post/all`                    | Obtener todos los  post                           |
 
 
 - **Obtener Todos los Post:** `Endpoint: POST /post/all`
@@ -231,7 +232,8 @@ Se requiere autenticación para acceder a los endpoints de esta API. Puedes obte
 - **Actualizar Post por ID:** `Endpoint: PUT /post/update/{id}`
     - Parámetros de la Solicitud:
       - `{id}` (Path Parameter): El ID del Post que se desea actualizar.
-          -  Cuerpo de la Solicitud:
+        
+    - Cuerpo de la Solicitud:
         ```json
         {
 
@@ -279,7 +281,7 @@ Se requiere autenticación para acceder a los endpoints de esta API. Puedes obte
     ```
 
 
-- **Listar Todos los  Post:** `Endpoint: GET /post/list `
+- **Listar Todos los Post:** `Endpoint: GET /post/list `
   
 Descripción: Este endpoint devuelve una lista de todos Post, incluyendo los comentarios asociados a cada post.
 
@@ -332,7 +334,7 @@ Descripción: Este endpoint devuelve una lista de todos Post, incluyendo los com
 ## Recursos Adicionales
 
 Aquí hay algunos recursos adicionales que podrían ser útiles:
-
+- [Documentacion de Spring Data](https://spring.io/projects/spring-data)
 - [Documentación de Java JWT](https://github.com/jwtk/jjwt)
 - [Documentacion de open jdk 17](https://docs.oracle.com/en/java/javase/17/docs/api/)
 - [Documentacion de Spring boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
