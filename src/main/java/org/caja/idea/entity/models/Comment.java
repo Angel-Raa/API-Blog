@@ -20,6 +20,7 @@ public class Comment {
     private LocalDateTime created;
     @JoinColumn(name = "post_id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Post.class)
+    @JsonIgnore
     private Post post;
     @JoinColumn(name = "user_id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, targetEntity = Users.class)

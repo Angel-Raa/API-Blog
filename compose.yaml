@@ -3,6 +3,8 @@ services:
     image: 'postgres:15-alpine'
     container_name: 'database'
     restart: 'always'
+    networks:
+      - red
     environment:
       - 'POSTGRES_DB=db'
       - 'POSTGRES_PASSWORD=secret'
@@ -12,8 +14,28 @@ services:
     ports:
       - '5432'
 
-
-
+  application:
+    build:
+      context: ./
+      dockerfile: 'Dockerfile'
+    container_name: 'application'
+    restart: 'always'
+    networks:
+      - 'red'
+    depends_on:
+      - 'database'
+    ports:
+      - '2020:8080'
+    environment:
+      - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/db'
+      - 'SPRING_DATASOURCE_USERNAME=db'
+      - 'SPRING_DATASOURCE_PASSWORD=secret'
+      - 'SPRING.JPA.PROPERTIES.HIBERNATE.DIALECT=org.hibernate.dialect.PostgreSQLDialect'
+      - 'SPRING_JPA_HIBERNATE_DDL_AUTO=update'
+      - 'SPRING_JPA_SHOW=true'
 
 volumes:
-  data:
+  'data':
+
+networks:
+  'red':

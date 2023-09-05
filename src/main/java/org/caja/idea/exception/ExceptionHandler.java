@@ -10,7 +10,6 @@ public class ExceptionHandler extends RuntimeException {
     private String message;
     private int code;
     private HttpStatus http;
-    private String description;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime time;
 
@@ -51,13 +50,6 @@ public class ExceptionHandler extends RuntimeException {
         this.http = http;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public LocalDateTime getTime() {
         return time;
@@ -73,7 +65,6 @@ public class ExceptionHandler extends RuntimeException {
                 "message='" + message + '\'' +
                 ", code=" + code +
                 ", http=" + http +
-                ", description='" + description + '\'' +
                 ", time=" + time +
                 '}';
     }
@@ -83,11 +74,11 @@ public class ExceptionHandler extends RuntimeException {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ExceptionHandler that = (ExceptionHandler) o;
-        return code == that.code && Objects.equals(message, that.message) && http == that.http && Objects.equals(description, that.description) && Objects.equals(time, that.time);
+        return code == that.code && Objects.equals(message, that.message) && http == that.http  && Objects.equals(time, that.time);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(message, code, http, description, time);
+        return Objects.hash(message, code, http,  time);
     }
 }

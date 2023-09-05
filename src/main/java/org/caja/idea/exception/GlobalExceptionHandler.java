@@ -62,7 +62,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<ErrorDetails> unauthorizedException(UnauthorizedException e) {
-        ErrorDetails errorDetails = new ErrorDetails(e.getMessage(), e.getDescription(), e.getCode(), e.getHttp(), e.getTime());
+        ErrorDetails errorDetails = new ErrorDetails(e.getMessage(), e.getCode(), e.getHttp(), e.getTime());
         return ResponseEntity.status(e.getHttp()).body(errorDetails);
     }
 
