@@ -16,7 +16,8 @@ Este proyecto representa un caso de uso de una aplicación Restful API, desarrol
 
 Asegúrate de tener instalados los siguientes componentes en tu entorno de desarrollo antes de comenzar:
 
-1. [Docker](https://docs.docker.com/compose/install/)
+1. [Git](https://git-scm.com/downloads)
+2. [Docker](https://docs.docker.com/compose/install/)
 
 ## Instrucciones de Uso
 
