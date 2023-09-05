@@ -11,7 +11,7 @@ Este proyecto representa un caso de uso de una aplicación Restful API, desarrol
 - Java JWT
 - Docker
 
-## Configuración del Entorno  y ## Prerrequisitos
+## Configuración del Entorno  y  Prerrequisitos
 
 Asegúrate de tener instalados los siguientes componentes en tu entorno de desarrollo antes de comenzar:
 
