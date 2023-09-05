@@ -43,14 +43,13 @@ docker compose up -d
   
 - Se requiere autenticación para acceder a los endpoints de esta API. Puedes obtener un token JWT mediante los siguientes endpoints:
 
+## Autenticación
+
 | Método   | Endpoint                               | Descripción                                |
 |----------|----------------------------------------|--------------------------------------------|
 | POST     | `/authentication/login`                | Iniciar sesión de usuario                  |
 | POST     | `/authentication/signup`               | Registro de usuario                        |
 | GET      | `/authentication/all`                  | Obtener todos los usuarios autenticados    |
-
-
-## Autenticación
 
 - **Iniciar sesión de usuario:** `POST /authentication/login`
     - Cuerpo de la solicitud:
@@ -266,6 +265,7 @@ docker compose up -d
         }
     }
     ```
+    
 ## Recursos Adicionales
 
 Aquí hay algunos recursos adicionales que podrían ser útiles:
