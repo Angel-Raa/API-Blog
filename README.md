@@ -326,7 +326,7 @@ Descripción: Este endpoint devuelve una lista de todos Post, incluyendo los com
 
 - **Obtener Todos los Comment:** `Endpoint: GET /comment/all`
   
-Descripción: Este endpoint permite obtener una lista de todos los comentarios en el sistema.
+Descripción: Este endpoint permite obtener una lista de todos los Comment.
 
 - Respuesta Exitosa:
   ```json
@@ -349,12 +349,58 @@ Descripción: Este endpoint permite obtener una lista de todos los comentarios e
   }
   ```
 
+- **Obtener un Comentario por ID:** `Endpoint: GET /comment/{id}`
+
+Descripción: Este endpoint permite obtener un Comment específico según su ID.
+
+ - Parámetros de la Solicitud:
+      `{id}` (Path Parameter): El ID del Commtn que se desea obtener.
+
+ - Respuesta Exitosa:
+  ```json
+  {
+
+    {
+        "id": 4,
+        "username": "admin",
+        "body": "muy buen articulos",
+        "created": "2023-09-05T01:57:26.710532"
+    }
+
+  }
+  ```
 
 
+- **Crear un Nuevo Comment en un Post:** `Endpoint: POST /comment/create/{PostId}`
+Descripción: Este endpoint permite crear un nuevo Comment en un Post específico, identificado por su PostId.
 
+    - Parámetros de la Solicitud:
+      - `{PostId}` (Path Parameter): El ID del Post en el que se desea crear el Comment.
 
-    
-    
+     - Cuerpo de la Solicitud:
+       ```json
+      {
+
+        {
+            "username": "admin",
+            "body": "muy buen artículo"
+        }
+
+      }
+      ```
+  - Respuesta Exitosa:
+    ```json
+    {
+
+        {
+            "message": "comment created successfully",
+            "code": 201,
+            "http": "CREATED",
+            "time": "05-09-2023 12:51:14"
+         }
+
+    }
+    ```
 ## Recursos Adicionales
 
 Aquí hay algunos recursos adicionales que podrían ser útiles:
