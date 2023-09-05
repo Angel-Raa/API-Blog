@@ -116,6 +116,16 @@ docker compose up -d
       }
       ```
 ## Endpoints de Post
+
+| Método   | Endpoint                       | Descripción                                      |
+|----------|--------------------------------|--------------------------------------------------|
+| POST     | `/post/create`                 | Crear un nuevo mensaje de publicación            |
+| GET      | `/post/list`                   | Listar todos los mensajes de publicación         |
+| GET      | `/post/{id}`                   | Obtener un mensaje de publicación por ID         |
+| GET      | `/post/find/{title}`           | Buscar mensajes de publicación por título        |
+| PUT      | `/post/update/{id}`            | Actualizar un mensaje de publicación por ID      |
+| DELETE   | `/post/delete/{id}`            | Eliminar un mensaje de publicación por ID        |
+
 - **Obtener Todos los Post:** `Endpoint: POST /post/all`
   - Respuesta Exitosa:
       ```json
