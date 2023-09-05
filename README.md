@@ -119,12 +119,14 @@ Se requiere autenticación para acceder a los endpoints de esta API. Puedes obte
 
 | Método   | Endpoint                       | Descripción                                      |
 |----------|--------------------------------|--------------------------------------------------|
-| POST     | `/post/create`                 | Crear un nuevo mensaje de publicación            |
-| GET      | `/post/list`                   | Listar todos los mensajes de publicación         |
-| GET      | `/post/{id}`                   | Obtener un mensaje de publicación por ID         |
-| GET      | `/post/find/{title}`           | Buscar mensajes de publicación por título        |
-| PUT      | `/post/update/{id}`            | Actualizar un mensaje de publicación por ID      |
-| DELETE   | `/post/delete/{id}`            | Eliminar un mensaje de publicación por ID        |
+| POST     | `/post/create`                 | Crear un nuevo post                              |
+| GET      | `/post/list`                   | Listar todos post                                |
+| GET      | `/post/{id}`                   | Obtener un post por ID                           |
+| GET      | `/post/find/{title}`           | Buscar post por título                           |
+| PUT      | `/post/update/{id}`            | Actualizar un mensaje de post por ID             |
+| DELETE   | `/post/delete/{id}`            | Eliminar post por ID                             |
+| POST     | `/post/all`                    | Obtener todos los  post                          |
+
 
 - **Obtener Todos los Post:** `Endpoint: POST /post/all`
   - Respuesta Exitosa:
