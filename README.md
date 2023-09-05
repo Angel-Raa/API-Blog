@@ -192,6 +192,33 @@ docker compose up -d
         } 
         ```
 
+- **Crear un Nuevo  POst:** `Endpoint: POST /post/create `
+    - Cuerpo de la Solicitud:
+        ```json
+        {
+
+           {
+              "username": "alba",
+              "title": "que son tipos de datos java",
+              "content": "Los tipos de datos en Java son un formato de almacenamiento de datos que puede contener un tipo específico o rango de valores."
+            }
+          
+        }
+        ```
+
+  - Respuesta Exitosa:
+      ```json
+      {
+        {
+          "message": "post created successfully",
+          "code": 201,
+          "http": "CREATED",
+          "time": "05-09-2023 03:29:08"
+        }
+      }
+      ```
+
+
 ## Recursos Adicionales
 
 Aquí hay algunos recursos adicionales que podrían ser útiles:
