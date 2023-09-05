@@ -40,6 +40,15 @@ docker compose up -d
 ### Base URL
 
 - [http://localhost:2020](http://localhost:2020)
+  
+- Se requiere autenticación para acceder a los endpoints de esta API. Puedes obtener un token JWT mediante los siguientes endpoints:
+
+| Método   | Endpoint                               | Descripción                                |
+|----------|----------------------------------------|--------------------------------------------|
+| POST     | `/authentication/login`                | Iniciar sesión de usuario                  |
+| POST     | `/authentication/signup`               | Registro de usuario                        |
+| GET      | `/authentication/all`                  | Obtener todos los usuarios autenticados    |
+
 
 ## Autenticación
 
@@ -103,7 +112,7 @@ docker compose up -d
             "createAt": "2023-09-05T02:24:01.017702",
             "updateAt": "2023-09-05T02:24:01.017821"
           }
-      ]    
+        ]    
       
       }
       ```
