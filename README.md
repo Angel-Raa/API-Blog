@@ -265,6 +265,55 @@ docker compose up -d
         }
     }
     ```
+
+
+- **Listar Todos los  Post:** `Endpoint: GET /post/list `
+Descripción: Este endpoint devuelve una lista de todos Post, incluyendo los comentarios asociados a cada post.
+  - Respuesta Exitosa:
+    ```json
+    {
+
+    [
+      {
+          "username": "angel",
+          "title": "para que sirve en java",
+        "content": "Java es un lenguaje de programación que se compila en bytecode y se ejecuta en una máquina virtual, lo que permite que el código se ejecute en cualquier plataforma con una JVM instalada, y ofrece un gran conjunto de bibliotecas estándar para facilitar el desarrollo de aplicaciones.",
+          "createAt": "2023-09-05T01:49:41.90261",
+          "updateAt": "2023-09-05T01:49:41.902698",
+          "commentList": [
+            {
+                "id": 1,
+                "body": "excelente contenido",
+                "created": "2023-09-05T01:52:07.086776"
+              },
+              {
+                "id": 4,
+                "body": "muy buen artículo",
+                "created": "2023-09-05T01:57:26.710532"
+              }
+            ]
+        },
+        {
+            "username": "angel",
+            "title": "que son JSON Web Token",
+            "content": "JSON Web Token (abreviado JWT) es un estándar abierto basado en JSON propuesto por IETF (RFC 7519) para la creación de tokens de acceso que permiten la propagación de identidad y privilegios o claims en inglés.",
+            "createAt": "2023-09-05T01:50:17.367953",
+            "updateAt": "2023-09-05T01:50:17.36798",
+            "commentList": []
+        }
+    ]
+
+    }
+    ``` 
+
+
+
+
+
+
+
+
+    
     
 ## Recursos Adicionales
 
