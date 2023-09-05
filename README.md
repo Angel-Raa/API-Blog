@@ -158,6 +158,24 @@ docker compose up -d
           ]
       }
         ```
+
+- **Obtener un Mensaje de Publicación por ID:** `Endpoint: GET /post/{id} `
+    - Parámetros de la Solicitud:
+        - `{id}` (Path Parameter): El ID del mensaje de publicación que se desea obtener.
+    - Respuesta Exitosa:
+        ```json
+        {
+          {
+            "id": 1,
+            "username": "angel",
+            "title": "para que sirve en java",
+            "content": "Java es un lenguaje de programación que se compila en bytecode y se ejecuta en una máquina virtual, lo que permite que el código se ejecute en cualquier plataforma con una             JVM  instalada, y ofrece un gran conjunto de bibliotecas estándar para facilitar el desarrollo de aplicaciones.",
+            "createAt": "2023-09-05T01:49:41.90261",
+            "updateAt": "2023-09-05T01:49:41.902698"
+          }
+        }
+          ```
+
 ## Recursos Adicionales
 
 Aquí hay algunos recursos adicionales que podrían ser útiles:
