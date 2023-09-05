@@ -436,7 +436,8 @@ Descripción: Este endpoint permite actualizar un Comment existente  mediante su
 Descripción: Este endpoint permite eliminar un Comment existente  mediante su ID.
     - Parámetros de la Solicitud:
         `{commentID}` (Path Parameter): El ID del comment que se desea eliminar.
-    - Cuerpo de la Solicitud:
+        
+   - Cuerpo de la Solicitud:
         ```json
         {
 
