@@ -1,4 +1,4 @@
-# Restful CRUD Blog API usando Spring Boot 3, Spring Security 6, JWT, PostgreSQL y  Spring Data Jpa
+# API Restful CRUD Blog usando Spring Boot 3, Spring Security 6, JWT, PostgreSQL y  Spring Data Jpa
 
 Este proyecto representa un caso de uso de una aplicación Restful API, desarrollada con  Java 17, Spring Boot 3, Spring Security 6, JWT (JSON Web Tokens),  PostgreSQL y Spring Data Jpa.
 
@@ -30,7 +30,7 @@ git clone https://github.com/Angel-Raa/Restful-CRUD-Blog-API-Spring-Boot-3.git
 ```
 #### Navegar al directorio del proyecto
 ```
-cd CRestful-CRUD-Blog-API-Spring-Boot-3
+cd Restful-CRUD-Blog-API-Spring-Boot-3
 ```
 
 #### Construir y ejecutar los contenedores de Docker Compose
@@ -439,7 +439,7 @@ Descripción: Este endpoint permite actualizar un Comment existente  mediante su
       }
       ```
 
-- **Eliminar un Comment por ID:** `ndpoint: DELETE /comment/delete/{commentID}`
+- **Eliminar un Comment por ID:** `Endpoint: DELETE /comment/delete/{commentID}`
  
 Descripción: Este endpoint permite eliminar un Comment existente  mediante su ID.
     - Parámetros de la Solicitud:
