@@ -26,11 +26,11 @@ Sigue estos pasos para ejecutar la aplicación en tu entorno local:
 
 #### Clonar el repositorio en tu máquina local
 ```
-git clone https://github.com/Angel-Raa/Restful-CRUD-Blog-API-Spring-Boot-3.git
+git clone https://github.com/Angel-Raa/API-Restful-CRUD-Blog-Spring-Boot.git
 ```
 #### Navegar al directorio del proyecto
 ```
-cd Restful-CRUD-Blog-API-Spring-Boot-3
+cd API-Restful-CRUD-Blog-Spring-Boot
 ```
 
 #### Construir y ejecutar los contenedores de Docker Compose
