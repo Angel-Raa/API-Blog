@@ -205,7 +205,7 @@ Se requiere autenticación para acceder a los endpoints de esta API. Puedes obte
         } 
         ```
 
-- **Crear un Nuevo  POst:** `Endpoint: POST /post/create `
+- **Crear un Nuevo  Post:** `Endpoint: POST /post/create `
     - Cuerpo de la Solicitud:
         ```json
         {
