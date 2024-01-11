@@ -30,7 +30,7 @@ git clone https://github.com/Angel-Raa/API-Restful-CRUD-Blog-Spring-Boot.git
 ```
 #### Navegar al directorio del proyecto
 ```
-cd API-Restful-CRUD-Blog-Spring-Boot
+cd API-Blog
 ```
 
 #### Construir y ejecutar los contenedores de Docker Compose
